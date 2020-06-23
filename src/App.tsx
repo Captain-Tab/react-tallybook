@@ -7,7 +7,7 @@ import {
   Redirect
 } from 'react-router-dom';
 import styled from 'styled-components';
-import Nav from './Components/Nav';
+import Nav from './components/Nav';
 
 const Wrapper = styled.div`
    min-height: 100vh;
