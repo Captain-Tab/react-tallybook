@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+// 导入所有icons文件下的所有svg
 let importAll = (requireContext: __WebpackModuleApi.RequireContext) => requireContext.keys().forEach(requireContext);
 try {importAll(require.context('icons', true, /\.svg$/));} catch (error) {console.log(error);}
 
@@ -28,4 +29,4 @@ const Icon = (props: Props)=>{
   )
 };
 
-export {Icon}
+export default Icon

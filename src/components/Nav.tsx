@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import React from 'react';
-import add from 'icons/test.svg'
-import {Icon} from 'components/Icon'
+import Icon from 'components/Icon'
 
-console.log(add)
 const NavWrapper =styled.div`
   box-shadow: 0 0 3px rgba(0,0,0,025);
   line-height: 24px;
@@ -13,7 +11,7 @@ const NavWrapper =styled.div`
     > li{
        width: 33.3%;
        text-align: center;
-       padding: 16px;
+       padding: 8px;
     }
   }
 `
@@ -21,7 +19,6 @@ const NavWrapper =styled.div`
 const Nav =()=>{
   return(
     <NavWrapper>
-
       <ul>
         <li>
           <Icon name="money"/>
