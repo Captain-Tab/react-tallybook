@@ -3,39 +3,21 @@ import Layout from '../components/Layout';
 import styled from 'styled-components';
 import CategorySection from './money/CategorySection';
 import TagSection from './money/TagsSection';
-import NotesSection from './money/NotesSection';
+import NoteSection from './money/NoteSection';
 import NumberPadSection from './money/NumberPadSection';
 
 // 对Layout组件的再次封装
 const MyLayout = styled(Layout)`
   display: flex;
   flex-direction: column;
-`
+`;
 
 const Money = () => {
   return (
     <MyLayout>
-      <CategorySection>
-        <ul>
-          <li className="selected">支出</li>
-          <li>收入</li>
-        </ul>
-      </CategorySection>
-      <TagSection>
-        <ol>
-          <li>服装</li>
-          <li>饮食</li>
-          <li>住宿</li>
-          <li>交通</li>
-        </ol>
-        <button>新增标签</button>
-      </TagSection>
-      <NotesSection>
-        <label>
-          <span>备注</span>
-          <input type="text" placeholder="请在这里添加备注"/>
-        </label>
-      </NotesSection>
+      <CategorySection/>
+      <TagSection/>
+      <NoteSection/>
       <NumberPadSection>
         <div className="output">
           100
