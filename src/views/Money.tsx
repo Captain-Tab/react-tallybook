@@ -5,40 +5,42 @@ import CategorySection from './money/CategorySection';
 import TagSection from './money/TagsSection';
 import NoteSection from './money/NoteSection';
 import NumberPadSection from './money/NumberPadSection';
+import {useState} from 'react';
 
 // 对Layout组件的再次封装
 const MyLayout = styled(Layout)`
   display: flex;
   flex-direction: column;
 `;
+type Category = '-' | '+'
 
 const Money = () => {
+  const [propsValue, setSelected] = useState({
+    tags: [] as string[],
+    note: '',
+    category: '-' as Category,
+    amount: 0
+  });
+
+  const handleChange = (obj: Partial<typeof propsValue>) => {
+    setSelected({
+      ...propsValue,
+      ...obj
+    });
+  };
+
   return (
     <MyLayout>
-      <CategorySection/>
-      <TagSection/>
-      <NoteSection/>
-      <NumberPadSection>
-        <div className="output">
-          100
-        </div>
-        <div className="pad clearfix">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>删除</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>清空</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button className="ok">OK</button>
-          <button className="zero">0</button>
-          <button>.</button>
-        </div>
-      </NumberPadSection>
+      {propsValue.amount}
+      <CategorySection value={propsValue.category}
+                       onChange={(category) => handleChange({category})}/>
+      <TagSection value={propsValue.tags}
+                  onChange={(tags) => handleChange({tags})}/>
+      <NoteSection value={propsValue.note}
+                   onChange={(note) => handleChange({note})}/>
+      <NumberPadSection value={propsValue.amount}
+                        onChange={(amount) => handleChange({amount})}
+                        onOk={() => {}}/>
     </MyLayout>
   );
 };

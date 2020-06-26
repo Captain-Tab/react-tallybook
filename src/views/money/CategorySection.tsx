@@ -24,20 +24,23 @@ const Wrapper = styled.section`
    }
   }
 `;
+type Props = {
+  value: '-' | '+',
+  onChange: (value: '-' | '+')=> void
+}
 
-const CategorySection: React.FC = () => {
+const CategorySection: React.FC<Props> = (props) => {
   const categoryMap = {'-': '支出', '+': '收入'};
   // 检索得到categoryMap的key集合
   type keys = keyof typeof categoryMap
   const [cateGoryList] = useState<keys[]>(['-', '+']);
-  const [category, setCategory] = useState('-');
-
+  const category = props.value
   return (
     <Wrapper>
       <ul>
         {cateGoryList.map(c =>
           <li className={category === c ? 'selected' : ''}
-              onClick={() => {setCategory(c)}}
+              onClick={() => {props.onChange(c);}}
               key={c}>
             {categoryMap[c]}
           </li>

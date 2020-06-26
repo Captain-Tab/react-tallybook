@@ -34,9 +34,14 @@ const Wrapper = styled.section`
    }
 `;
 
-const TagSection: React.FC = () => {
+type Props= {
+  value:string[];
+  onChange:(selected:string[])=> void
+}
+
+const TagSection: React.FC<Props> = (props) => {
   const [tags, setTags] = useState<string[]>(['服装', '饮食', '住宿', '交通']);
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const selectedTags = props.value
 
 
   const onAddTag = () => {
@@ -50,9 +55,9 @@ const TagSection: React.FC = () => {
     const index = selectedTags.indexOf(tag);
     // 如果 tag 已被选中，就复制所有没有被选中的tag, 生成新的selectedTag
     if (index >= 0) {
-      setSelectedTags(selectedTags.filter(t => t !== tag));
+      props.onChange(selectedTags.filter(t => t !== tag));
     } else {
-      setSelectedTags([...selectedTags, tag]);
+      props.onChange([...selectedTags, tag]);
     }
   };
 
