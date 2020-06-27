@@ -10,6 +10,7 @@ import Tags from './views/Tags';
 import Money from './views/Money';
 import Statistics from './views/Statistics';
 import styled from 'styled-components';
+import TagEdit from './views/TagEdit';
 
 
 const AppWrapper = styled.div`
@@ -25,13 +26,16 @@ function App() {
     <AppWrapper>
       <Router>
         <Switch>
-          <Route exact path="/tags">
+          <Route exact={true} path="/tags">
             <Tags/>
           </Route>
-          <Route exact path="/money">
+          <Route  exact={true} path="/tags/:tag">
+            <TagEdit/>
+          </Route>
+          <Route exact={true} path="/money">
             <Money/>
           </Route>
-          <Route exact path="/statistics">
+          <Route  exact={true} path="/statistics">
             <Statistics/>
           </Route>
           <Route path="*">

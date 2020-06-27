@@ -16,7 +16,7 @@ type Category = '-' | '+'
 
 const Money = () => {
   const [propsValue, setSelected] = useState({
-    tags: [] as string[],
+    tagIds: [] as number[],
     note: '',
     category: '-' as Category,
     amount: 0
@@ -33,8 +33,8 @@ const Money = () => {
     <MyLayout>
       <CategorySection value={propsValue.category}
                        onChange={(category) => handleChange({category})}/>
-      <TagSection value={propsValue.tags}
-                  onChange={(tags) => handleChange({tags})}/>
+      <TagSection value={propsValue.tagIds}
+                  onChange={(tagIds) => handleChange({tagIds})}/>
       <NoteSection value={propsValue.note}
                    onChange={(note) => handleChange({note})}/>
       <NumberPadSection value={propsValue.amount}

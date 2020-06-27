@@ -45,3 +45,9 @@ a {
   text-decoration: none;
   color: inherit;
 }
+// 文字超过一行的样式
+.oneLine{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
