@@ -1,13 +1,14 @@
 import {useState} from 'react';
+import createId from './lib/createId';
 
 // 封装一个自定义hook
 const useTags = () => {
   const [tags, setTags] = useState<{ id: number, name: string }[]>(
     [
-      {id: 1, name: '衣服'},
-      {id: 2, name: '饮食'},
-      {id: 3, name: '住宿'},
-      {id: 4, name: '交通'},
+      {id: createId(), name: '衣服'},
+      {id: createId(), name: '饮食'},
+      {id: createId(), name: '住宿'},
+      {id: createId(), name: '交通'},
 ]
 )
   ;
