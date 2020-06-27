@@ -31,7 +31,6 @@ const Money = () => {
 
   return (
     <MyLayout>
-      {propsValue.amount}
       <CategorySection value={propsValue.category}
                        onChange={(category) => handleChange({category})}/>
       <TagSection value={propsValue.tags}
