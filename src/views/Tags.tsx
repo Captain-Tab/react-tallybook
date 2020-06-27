@@ -48,8 +48,8 @@ const Tags = () => {
       <TagList>
         {tags.map((tag: { id: number, name: string }) =>
           <li key={tag.id} className="oneLine">
-            <Link to={'/tags/' + tag.name}>
-              <span>{tag.name}</span>
+            <Link to={'/tags/' + tag.id}>
+              <span>{tag.name}:{tag.id}</span>
               <Icon name="right"/>
             </Link>
           </li>
