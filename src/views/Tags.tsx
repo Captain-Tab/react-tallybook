@@ -49,7 +49,7 @@ const Tags = () => {
         {tags.map((tag: { id: number, name: string }) =>
           <li key={tag.id} className="oneLine">
             <Link to={'/tags/' + tag.id}>
-              <span>{tag.name}:{tag.id}</span>
+              <span>{tag.name}</span>
               <Icon name="right"/>
             </Link>
           </li>
