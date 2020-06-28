@@ -29,9 +29,10 @@ const InputWrapper = styled.div`
 `
 
 const TagEdit :React.FC = ()=>{
-  const {findTag} = useTags()
-  let {id} = useParams<Params>()
-  const tag = findTag(parseInt(id))
+  const {findTag, updateTag} = useTags()
+  // 重命名id为idString
+  let {id:idString} = useParams<Params>()
+  const tag = findTag(parseInt(idString))
 
   return(
     <Layout>
@@ -46,6 +47,7 @@ const TagEdit :React.FC = ()=>{
                    type="text"
                    placeholder="标签名"
                    value={tag.name}
+                   onChange={(event) => updateTag(tag.id, {name :event.target.value})}
             />
         </InputWrapper>
         <div>
