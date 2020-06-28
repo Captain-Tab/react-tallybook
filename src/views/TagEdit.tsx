@@ -1,6 +1,6 @@
 import React from 'react';
 import useTags from '../useTags';
-import {useParams} from 'react-router-dom';
+import {useParams, useHistory} from 'react-router-dom';
 import Layout from '../components/Layout';
 import Icon from '../components/Icon';
 import Button from '../components/Button';
@@ -53,16 +53,20 @@ const TagEdit: React.FC = () => {
     </div>
   );
 
+  const history = useHistory()
+  // 使用history的方法，点击回退页面
+  const clickBack = ()=>{
+    history.goBack()
+  }
 
   return (
     <Layout>
       <div>
         <TopBar>
-          <Icon name="left"/>
+          <Icon name="left" onClick={clickBack}/>
           <span>编辑标签</span>
           <Icon/>
         </TopBar>
-
         {tag ? tagContent(tag) : <CenterBox> tag不存在</CenterBox>}
       </div>
     </Layout>
