@@ -5,6 +5,9 @@ import Layout from '../components/Layout';
 import Icon from '../components/Icon';
 import Button from '../components/Button';
 import styled from 'styled-components';
+import Input from '../components/Input';
+import CenterBox from '../components/CenterBox';
+import Space from '../components/Space';
 
 type Params = {
   id: string
@@ -17,6 +20,12 @@ const TopBar =  styled.header`
   line-height: 20px;
   padding: 8px;
   background: #fff;
+`
+const InputWrapper = styled.div`
+  background:#fff;
+  padding: 0 16px;
+  margin-top: 8px;
+  
 `
 
 const TagEdit :React.FC = ()=>{
@@ -32,14 +41,18 @@ const TagEdit :React.FC = ()=>{
           <span>编辑标签</span>
           <Icon/>
         </TopBar>
+        <InputWrapper>
+            <Input label="标签名"
+                   type="text"
+                   placeholder="标签名"
+                   value={tag.name}
+            />
+        </InputWrapper>
         <div>
-          <label>
-            <span>备注</span>
-            <input type="text" placeholder="标签名"/>
-          </label>
-        </div>
-        <div>
-          <Button>删除标签</Button>
+          <CenterBox>
+            <Space />
+            <Button>删除标签</Button>
+          </CenterBox>
         </div>
       </div>
     </Layout>
