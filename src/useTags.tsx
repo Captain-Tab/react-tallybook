@@ -27,14 +27,22 @@ const useTags = () => {
     // 深拷贝对象
     const tagsClone = JSON.parse(JSON.stringify(tags));
     // 把tagsClone的第index删掉，换为{id: id, name: obj.name}
-    const a = tagsClone.splice(index, 1, {id: id, name: obj.name});
-    setTags(tagsClone)
+    tagsClone.splice(index, 1, {id: id, name: obj.name});
+    setTags(tagsClone);
+  };
+  const deleteTag = (id: number) => {
+    const index = findTagIndex(id);
+    // 深拷贝对象
+    const tagsClone = JSON.parse(JSON.stringify(tags));
+    tagsClone.splice(index, 1);
+    setTags(tagsClone);
   };
   return {
     tags,
     setTags,
     findTag,
     updateTag,
+    deleteTag,
     findTagIndex
   };
 };
