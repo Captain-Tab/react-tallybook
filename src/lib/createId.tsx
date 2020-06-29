@@ -1,8 +1,9 @@
 // 函数封装法
-let id = 0;
+let id = parseInt(window.localStorage.getItem('idMAX') || "0")
 
 const createId = (): number => {
   id += 1;
+  window.localStorage.setItem('idMAX', JSON.stringify(id));
   return id;
 };
 

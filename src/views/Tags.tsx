@@ -26,7 +26,7 @@ const TagList = styled.ol`
 `;
 
 const Tags = () => {
-  const {tags} = useTags();
+  const {tags, addTag} = useTags();
 
   return (
     <Layout>
@@ -42,7 +42,7 @@ const Tags = () => {
       </TagList>
       <CenterBox>
         <Space/>
-        <Button>新增标签</Button>
+        <Button onClick={addTag}>新增标签</Button>
       </CenterBox>
     </Layout>
   );
