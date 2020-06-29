@@ -1,16 +1,26 @@
-import {useState} from 'react';
+import {useEffect,useState} from 'react';
 import createId from './lib/createId';
-
-const defaultTags = [
-  {id: createId(), name: '衣服'},
-  {id: createId(), name: '饮食'},
-  {id: createId(), name: '住宿'},
-  {id: createId(), name: '交通'},
-];
+import useUpdate from './hooks/useUpdate';
 
 // 封装一个自定义hook
 const useTags = () => {
-  const [tags, setTags] = useState<{ id: number, name: string }[]>(defaultTags);
+  const [tags, setTags] = useState<{ id: number, name: string }[]>([]);
+  // 组件挂载时执行，下面的代码
+  useEffect(()=>{
+    let localTags = ( JSON.parse(window.localStorage.getItem('tags') || '[]'))
+    if(localTags.length === 0){
+      localTags = [
+        {id: createId(), name: '衣服'},
+        {id: createId(), name: '饮食'},
+        {id: createId(), name: '住宿'},
+        {id: createId(), name: '交通'}
+      ]
+    }
+    setTags(localTags)
+  }, [])
+  useUpdate(()=>{
+    window.localStorage.setItem('tags', JSON.stringify(tags))
+  }, [tags])
   const findTag = (id: number) => tags.filter(tag => tag.id === id)[0];
   const findTagIndex = (id: number) => {
     let result = -1;
@@ -23,6 +33,7 @@ const useTags = () => {
     return result;
   };
   const updateTag = (id: number, obj: { name: string }) => {
+    console.log('set Item')
     setTags(tags.map( tag =>{
       return tag.id === id ? {id, name: obj.name} : tag
     }))
@@ -41,12 +52,22 @@ const useTags = () => {
     // tagsClone.splice(index, 1);
     // setTags(tagsClone);
   };
+  const addTag = () => {
+    const tagName = window.prompt('新增的标签为');
+    if (tagName !== null && tagName !== '') {
+      setTags([...tags, {id: createId(), name: tagName}]);
+    }
+    if(tagName === ''){
+     window.alert('提示: 添加失败，输入不能为空')
+    }
+  };
   return {
     tags,
     setTags,
     findTag,
     updateTag,
     deleteTag,
+    addTag,
     findTagIndex
   };
 };
