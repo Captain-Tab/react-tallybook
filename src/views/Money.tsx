@@ -35,14 +35,14 @@ const Money = () => {
   };
 
  const onOk = () =>{
-   addRecord(propsValue)
-   alert('添加数据成功')
-   setSelected(defaultFormData)
+   if(addRecord(propsValue )){
+     alert('添加数据成功')
+     setSelected(defaultFormData)
+   }
  }
 
   return (
     <MyLayout>
-      {JSON.stringify(propsValue)}
       <CategorySection value={propsValue.category}
                        onChange={(category) => handleChange({category})}/>
       <TagSection value={propsValue.tagIds}
