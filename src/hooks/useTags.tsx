@@ -61,6 +61,10 @@ const useTags = () => {
      window.alert('提示: 添加失败，输入不能为空')
     }
   };
+  const getName = (id:number) =>{
+    const tag = tags.filter(t=>t.id ===id)[0]
+    return tag ? tag.name : ''
+  }
   return {
     tags,
     setTags,
@@ -68,7 +72,8 @@ const useTags = () => {
     updateTag,
     deleteTag,
     addTag,
-    findTagIndex
+    findTagIndex,
+    getName
   };
 };
 
