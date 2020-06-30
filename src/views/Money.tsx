@@ -6,22 +6,27 @@ import TagSection from './money/TagsSection';
 import NoteSection from './money/NoteSection';
 import NumberPadSection from './money/NumberPadSection';
 import {useState} from 'react';
+import useRecords from '../hooks/useRecords';
 
 // 对Layout组件的再次封装
 const MyLayout = styled(Layout)`
   display: flex;
   flex-direction: column;
 `;
+
 type Category = '-' | '+'
 
-const Money = () => {
-  const [propsValue, setSelected] = useState({
-    tagIds: [] as number[],
-    note: '',
-    category: '-' as Category,
-    amount: 0
-  });
+const defaultFormData = {
+  tagIds: [] as number[],
+  note: '',
+  category: '-' as Category,
+  amount: 0
+}
 
+const Money = () => {
+  const [propsValue, setSelected] = useState(defaultFormData);
+
+  const {addRecord} = useRecords()
   const handleChange = (obj: Partial<typeof propsValue>) => {
     setSelected({
       ...propsValue,
@@ -29,8 +34,15 @@ const Money = () => {
     });
   };
 
+ const onOk = () =>{
+   addRecord(propsValue)
+   alert('添加数据成功')
+   setSelected(defaultFormData)
+ }
+
   return (
     <MyLayout>
+      {JSON.stringify(propsValue)}
       <CategorySection value={propsValue.category}
                        onChange={(category) => handleChange({category})}/>
       <TagSection value={propsValue.tagIds}
@@ -39,7 +51,7 @@ const Money = () => {
                    onChange={(note) => handleChange({note})}/>
       <NumberPadSection value={propsValue.amount}
                         onChange={(amount) => handleChange({amount})}
-                        onOk={() => {}}/>
+                        onOk={onOk}/>
     </MyLayout>
   );
 };
