@@ -9,7 +9,7 @@ type NewRecordItem = {
   amount: number,
 }
 
-type RecordItem = NewRecordItem & {
+export type RecordItem = NewRecordItem & {
   createdAt:string // ISO 8601 标准的字符串
 }
 
