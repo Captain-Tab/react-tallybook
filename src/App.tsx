@@ -26,22 +26,22 @@ function App() {
     <AppWrapper>
       <Router>
         <Switch>
-          <Route exact={true} path="/tags">
+          <Route exact path="/tags">
             <Tags/>
           </Route>
-          <Route exact={true} path="/tags/:id">
+          <Route exact path="/tags/:id">
             <TagEdit/>
           </Route>
-          <Route exact={true} path="/money">
+          <Route exact path="/money">
             <Money/>
           </Route>
-          <Route  exact={true} path="/statistics">
+          <Route  exact path="/statistics">
             <Statistics/>
           </Route>
+          <Redirect exact from="/" to="/money"/>
           <Route path="*">
             <NoMatch/>
           </Route>
-          <Redirect exact from="/" to="/money"/>
         </Switch>
       </Router>
     </AppWrapper>
