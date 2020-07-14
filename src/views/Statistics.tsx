@@ -39,13 +39,12 @@ const Statistics = () => {
 
   const hash: { [key: string]: RecordItem[] } = {}; // 时间为key,数据为对应时间的hash数据结构
   // 对数据根据时间进行分组
-  selectedCategory.map(r => {
+  selectedCategory.forEach(r => {
     const key = day(r.createdAt).format('YYYY年MM月DD日');
     if (!(key in hash)) {
       hash[key] = [];
     }
     hash[key].push(r);
-    return ''
   });
 
   const orderArray = Object.entries(hash).sort((a, b) => {

@@ -47,7 +47,7 @@ const Money = () => {
   };
 
   return (
-    <MyLayout>
+    <MyLayout scrollTop={9999}>
       <CategoryWrapper>
         <CategorySection value={propsValue.category}
                          onChange={(category) => handleChange({category})}/>

@@ -33,7 +33,6 @@ const useTags = () => {
     return result;
   };
   const updateTag = (id: number, obj: { name: string }) => {
-    console.log('set Item')
     setTags(tags.map( tag =>{
       return tag.id === id ? {id, name: obj.name} : tag
     }))
